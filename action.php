@@ -267,10 +267,11 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 if (isset($_POST["count_item"])) {
 	//When user is logged in then we will count number of item in cart by using user session id
 	if (isset($_SESSION["uid"])) {
-		$sql = "SELECT COUNT(*) AS count_item FROM cart WHERE user_id = $_SESSION[uid]";
+		// $sql = "SELECT COUNT(*) AS count_item FROM cart WHERE user_id = $_SESSION[uid]";
+		$sql = "SELECT SUM(qty) AS count_item FROM cart WHERE user_id = $_SESSION[uid]";
 	}else{
 		//When user is not logged in then we will count number of item in cart by using users unique ip address
-		$sql = "SELECT COUNT(*) AS count_item FROM cart WHERE ip_add = '$ip_add' AND user_id < 0";
+		$sql = "SELECT SUM(qty) AS count_item FROM cart WHERE ip_add = '$ip_add' AND user_id < 0";
 	}
 	
 	$query = mysqli_query($con,$sql);
@@ -295,7 +296,9 @@ if (isset($_POST["Common"])) {
 		//display cart item in dropdown menu
 		if (mysqli_num_rows($query) > 0) {
 			$n=0;
-			$total_price=0;
+			$grand_total=0;
+			$total_quantity=0;
+			// $total_price=0;
 			while ($row=mysqli_fetch_array($query)) {
                 
 				$n++;
@@ -305,7 +308,10 @@ if (isset($_POST["Common"])) {
 				$product_image = $row["product_image"];
 				$cart_item_id = $row["id"];
 				$qty = $row["qty"];
-				$total_price=$total_price+$product_price;
+				// $total_price=$total_price+$product_price;
+				$total_price=$qty*$product_price;
+				$total_quantity=$total_quantity+$qty;				
+				$grand_total=$grand_total+$total_price;
 				echo '
 					
                     
@@ -315,7 +321,7 @@ if (isset($_POST["Common"])) {
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">'.$product_title.'</a></h3>
-													<h4 class="product-price"><span class="qty">'.$n.'</span>₱'.$product_price.'</h4>
+													<h4 class="product-price"><span class="qty">'.$qty.'</span>₱'.$product_price.'</h4>
 												</div>
 												
 											</div>'
@@ -326,8 +332,8 @@ if (isset($_POST["Common"])) {
 			}
             
             echo '<div class="cart-summary">
-				    <small class="qty" style="color: black;">'.$n.' Item(s) selected</small>
-				    <h5 style="color: #D10024;">₱'.$total_price.'</h5>
+				    <small class="qty" style="color: black;">'.$total_quantity.' Item(s) selected</small>
+				    <h5 style="color: #D10024;">₱'.$grand_total.'</h5>
 				</div>'
             ?>
 				
