@@ -1,0 +1,20 @@
+/* chart */
+.graphBox{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+}
+
+.graphBox .box{
+    position: relative;
+    background: rgb(31, 75, 172);
+    padding: 20px;
+    width: 100%;
+    border-radius: 20px;
+}
+.graphBox #piechart{
+    background: rgb(31, 75, 172);
+}
