@@ -82,15 +82,15 @@ include "header.php";
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                        <img src="product_images/'.$row['product_image2'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                        <img src="product_images/'.$row['product_image3'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                        <img src="product_images/'.$row['product_image4'].'" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -102,15 +102,15 @@ include "header.php";
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                        <img src="product_images/'.$row['product_image2'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'g" alt="">
+                                        <img src="product_images/'.$row['product_image3'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                        <img src="product_images/'.$row['product_image4'].'" alt="">
                                     </div>
                                 </div>
                             </div>
