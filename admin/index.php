@@ -60,15 +60,15 @@ include "topheader.php";
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary" style="font-family: Nunito;">
-                        <tr><th>ID</th><th>FirstName</th><th>LastName</th><th>Email</th><th>Password</th><th>Contact</th><th>Address</th><th>City</th>
+                        <tr><th>ID</th><th>FirstName</th><th>LastName</th><th>Gender</th><th>Birthday</th><th>Email</th><th>Password</th><th>Contact Number</th><th>Address1</th><th>Address2</th>
                     </tr></thead>
                     <tbody style="font-family: Nunito;">
                       <?php 
                         $result=mysqli_query($con,"select * from user_info")or die ("query 1 incorrect.....");
 
-                        while(list($user_id,$first_name,$last_name,$email,$password,$phone,$address1,$address2)=mysqli_fetch_array($result))
+                        while(list($user_id,$first_name,$last_name,$gender,$birthday,$email,$password,$mobile,$address1,$address2)=mysqli_fetch_array($result))
                         {	
-                        echo "<tr><td>$user_id</td><td>$first_name</td><td>$last_name</td><td>$email</td><td>$password</td><td>$phone</td><td>$address1</td><td>$address2</td>
+                        echo "<tr><td>$user_id</td><td>$first_name</td><td>$last_name</td><td>$gender</td><td>$birthday</td><td>$email</td><td>$password</td><td>$mobile</td><td>$address1</td><td>$address2</td>
 
                         </tr>";
                         }
@@ -148,7 +148,11 @@ include "topheader.php";
             </div>
           </div>
            </div>
-          
+
+           <form class="form-inline" method="post" action="generate_pdf.php">
+<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary"><i class="fa fa-pdf" aria-hidden="true"></i>
+Generate PDF</button>
+</form>
            
             
           
